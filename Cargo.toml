@@ -1,0 +1,10 @@
+[package]
+name = "e6b-drills"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.24", features = ["derive"] }
+crossterm = "0.28.1"
+inquire = "0.7.5"
+rand = "0.8.5"
