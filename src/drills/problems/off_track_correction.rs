@@ -1,5 +1,5 @@
 use super::Problem;
-use crate::{calculators::one_in_sixty_rule, cmds::drills::random_generators};
+use crate::{calculators::one_in_sixty_rule, drills::random_generators};
 use rand::{
     distributions::{Distribution, Standard},
     Rng,
