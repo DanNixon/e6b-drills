@@ -7,7 +7,10 @@ use self::{
     heading_and_groundspeed::HeadingAndGroundspeed, off_track_correction::OffTrackCorrection,
     wind::Wind, wind_components::WindComponents,
 };
-use rand::{distributions::Distribution, distributions::Standard, Rng};
+use rand::{
+    distr::{Distribution, StandardUniform},
+    Rng,
+};
 
 #[derive(Debug, Clone)]
 pub(crate) enum ProblemTypes {
@@ -28,9 +31,9 @@ impl ProblemTypes {
     }
 }
 
-impl Distribution<ProblemTypes> for Standard {
+impl Distribution<ProblemTypes> for StandardUniform {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> ProblemTypes {
-        let index: u8 = rng.gen_range(0..4);
+        let index: u8 = rng.random_range(0..4);
         match index {
             0 => ProblemTypes::HeadingAndGroundspeed,
             1 => ProblemTypes::Wind,
