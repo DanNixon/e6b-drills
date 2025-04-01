@@ -1,7 +1,7 @@
 use super::Problem;
 use crate::{calculators::one_in_sixty_rule, drills::random_generators};
 use rand::{
-    distributions::{Distribution, Standard},
+    distr::{Distribution, StandardUniform},
     Rng,
 };
 use std::fmt::{Display, Write};
@@ -22,7 +22,7 @@ impl Problem for OffTrackCorrection {
     fn new_random<R: Rng>(rng: &mut R) -> Self {
         let track_length = random_generators::track_distance(rng);
         let distance_off_track = random_generators::distance_off_track(rng);
-        let direction_off_track = rng.gen();
+        let direction_off_track = rng.random();
         let track_covered = random_generators::track_distance_already_covered(rng, track_length);
 
         let track_error = one_in_sixty_rule::calculate_angle(distance_off_track, track_covered);
@@ -93,9 +93,9 @@ impl Direction {
     }
 }
 
-impl Distribution<Direction> for Standard {
+impl Distribution<Direction> for StandardUniform {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Direction {
-        let index: u8 = rng.gen_range(0..2);
+        let index: u8 = rng.random_range(0..2);
         match index {
             0 => Direction::Left,
             1 => Direction::Right,
