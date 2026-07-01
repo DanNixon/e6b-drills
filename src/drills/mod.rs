@@ -4,7 +4,7 @@ mod random_generators;
 use crossterm::style::Stylize;
 use inquire::Confirm;
 use problems::ProblemTypes;
-use rand::Rng;
+use rand::RngExt;
 
 pub(super) fn run() {
     let mut rng = rand::rng();
