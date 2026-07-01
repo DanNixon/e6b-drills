@@ -9,7 +9,7 @@ use self::{
 };
 use rand::{
     distr::{Distribution, StandardUniform},
-    Rng,
+    Rng, RngExt,
 };
 
 #[derive(Debug, Clone)]

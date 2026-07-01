@@ -2,7 +2,7 @@ use super::Problem;
 use crate::{calculators::one_in_sixty_rule, drills::random_generators};
 use rand::{
     distr::{Distribution, StandardUniform},
-    Rng,
+    Rng, RngExt,
 };
 use std::fmt::{Display, Write};
 
